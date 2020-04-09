@@ -12,6 +12,7 @@ module.exports = (env, argv) => {
 
     return {
         mode: is_prod ? 'production' : 'development',
+        target: 'electron-renderer',
         context: __dirname,
         entry: entry_points,
         output: {
