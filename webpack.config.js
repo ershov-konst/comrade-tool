@@ -1,9 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const entry_points_dir = 'src/entrypoints';
 const entry_points = {
     'index' : [
-        `./${entry_points_dir}/index.js`
+        `./src/entrypoints/index.js`,
+        `./src/styles/main.less`
     ]
 };
 
@@ -50,6 +50,15 @@ module.exports = (env, argv) => {
                 }
             ]
         },
+        plugins: [
+            // Достаем CSS в отдельные бандлы
+            new MiniCssExtractPlugin({
+                // Options similar to the same options in webpackOptions.output
+                // both options are optional
+                filename: "[name].css",
+                chunkFilename: "[id].css"
+            }),
+        ],
         devtool: 'source-map',
         watchOptions: {
             aggregateTimeout: 1000

@@ -13,10 +13,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "classnames": "^2.2.6",
     "css-loader": "^3.5.1",
     "electron": "^8.2.0",
     "electron-rebuild": "^1.10.1",

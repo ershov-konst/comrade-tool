@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import usb from '../lib/usb';
+import { init as initUSB } from '../lib/usb';
 import deviceReducer from '../ducks/device';
 import Pedals from '../components/Pedals';
 import WelcomeScreen from '../components/WelcomeScreen';
@@ -15,7 +14,6 @@ import {
 } from '../lib/constants';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const history = createHashHistory();
 const store = createStore(
     combineReducers({
         device: deviceReducer
@@ -24,7 +22,7 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk))
 );
 
-usb(store, history);
+initUSB();
 
 ReactDOM.render(
     <Provider store={store}>
